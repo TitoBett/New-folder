@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Weather App</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <div id="weather-root">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="app-inner">
+
+      <!-- Search bar -->
+      <div class="top-bar">
+        <div class="search-wrap">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+               stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"/>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+          <input id="city-input" placeholder="Search city..." autocomplete="off" spellcheck="false"/>
+        </div>
+        <button class="icon-btn" id="locate-btn" title="Use my location">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+               stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M12 1v3M12 20v3M1 12h3M20 12h3"/>
+            <circle cx="12" cy="12" r="8" opacity="0.4"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Unit + theme toggles -->
+      <div class="toggle-row">
+        <div class="pill-toggle">
+          <button id="btn-c" class="active">°C</button>
+          <button id="btn-f">°F</button>
+        </div>
+        <button class="theme-toggle" id="theme-btn">☾ Dark</button>
+      </div>
+
+      <!-- Loading state -->
+      <div class="state-box" id="state-loading">
+        <div class="spinner"></div>
+        <div class="state-title">Fetching weather…</div>
+      </div>
+
+      <!-- Error state -->
+      <div class="state-box" id="state-error">
+        <div class="state-icon">🌧</div>
+        <div class="state-title" id="err-title">City not found</div>
+        <div class="state-sub" id="err-sub">Try a different city name</div>
+      </div>
+
+      <!-- Empty state -->
+      <div class="state-box show" id="state-empty">
+        <div class="state-icon">🌍</div>
+        <div class="state-title">Where in the world?</div>
+        <div class="state-sub">Search for a city or use location</div>
+      </div>
+
+      <!-- Main weather content -->
+      <div id="weather-content" style="display:none">
+        <div class="main-card fade-in" id="main-card">
+          <div class="city-line">
+            <span class="city-name" id="disp-city">—</span>
+          </div>
+          <div class="date-line" id="disp-date">—</div>
+          <div class="weather-hero">
+            <div class="temp-block">
+              <div class="temp-main" id="disp-temp">—</div>
+              <div class="condition-label" id="disp-cond">—</div>
+              <div class="feels-like" id="disp-feels">—</div>
+            </div>
+            <div class="weather-icon-large" id="disp-icon">🌤</div>
+          </div>
+          <div class="stats-row">
+            <div class="stat-pill">
+              <span class="stat-icon">💧</span>
+              <span class="stat-label">Humidity</span>
+              <span class="stat-value" id="disp-hum">—</span>
+            </div>
+            <div class="stat-pill">
+              <span class="stat-icon">💨</span>
+              <span class="stat-label">Wind</span>
+              <span class="stat-value" id="disp-wind">—</span>
+            </div>
+            <div class="stat-pill">
+              <span class="stat-icon">👁️</span>
+              <span class="stat-label">Visibility</span>
+              <span class="stat-value" id="disp-vis">—</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5-day forecast -->
+        <div class="fade-in" style="animation-delay:0.1s">
+          <div class="section-label">5-day forecast</div>
+          <div class="forecast-row" id="forecast-row"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
