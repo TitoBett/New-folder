@@ -1,0 +1,1 @@
+A simple weather application that provides real-time weather updates for any location. Users can search cities to view temperature, humidity, and conditions. Built with a clean interface, it uses an external API to fetch accurate data, making it fast, lightweight, and easy to use for everyday weather checks.
